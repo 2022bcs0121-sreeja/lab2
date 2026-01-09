@@ -25,7 +25,7 @@ X = X[selected_features]
 
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.3, random_state=42
 )
 
 # Preprocessing
@@ -34,7 +34,7 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 # Model
-model = Ridge(alpha=0.5)
+model = Ridge(alpha=1.0)
 model.fit(X_train, y_train)
 
 # Prediction
