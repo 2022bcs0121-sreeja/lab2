@@ -31,7 +31,10 @@ jobs:
         echo "**Name:** CHALLA SREEJA" >> $GITHUB_STEP_SUMMARY
         echo "**Roll No:** 2022BCS0121" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        cat outputs/results.json >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Metrics" >> $GITHUB_STEP_SUMMARY
+        cat outputs/results.json >> $GITHUB_STEP_SUMMARY || echo "Results file not found"
+
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
