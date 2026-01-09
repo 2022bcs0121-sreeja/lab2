@@ -1,10 +1,14 @@
 import pandas as pd
 import json
 import joblib
+import os
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error, r2_score
+
+# Ensure outputs directory exists
+os.makedirs("outputs", exist_ok=True)
 
 # Load dataset
 data = pd.read_csv("dataset/winequality-red.csv", sep=';')
@@ -46,6 +50,10 @@ print("R2 Score:", r2)
 joblib.dump(model, "outputs/model.pkl")
 
 # Save results
-results = {"MSE": mse, "R2_Score": r2}
+results = {
+    "MSE": mse,
+    "R2_Score": r2
+}
+
 with open("outputs/results.json", "w") as f:
     json.dump(results, f, indent=4)
