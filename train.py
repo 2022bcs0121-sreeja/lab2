@@ -10,8 +10,10 @@ from sklearn.metrics import mean_squared_error, r2_score
 # Ensure outputs directory exists
 os.makedirs("outputs", exist_ok=True)
 
-# Load dataset
-data = pd.read_csv("dataset/winequality-red.csv", sep=';')
+# Load dataset (FIXED separator)
+data = pd.read_csv("dataset/winequality-red.csv")
+
+print("Columns:", list(data.columns))
 
 X = data.drop("quality", axis=1)
 y = data["quality"]
@@ -42,7 +44,6 @@ y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
 
-# Print metrics
 print("MSE:", mse)
 print("R2 Score:", r2)
 
