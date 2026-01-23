@@ -1,3 +1,6 @@
+fastapi
 pandas
 scikit-learn
 joblib
+numpy
+uvicorn

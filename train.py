@@ -10,10 +10,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 # Ensure outputs directory exists
 os.makedirs("outputs", exist_ok=True)
 
-# Load dataset (FIXED separator)
+# Load dataset
 data = pd.read_csv("dataset/winequality-red.csv")
-
-print("Columns:", list(data.columns))
 
 X = data.drop("quality", axis=1)
 y = data["quality"]
@@ -44,17 +42,17 @@ y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
 
-print("MSE:", mse)
-print("R2 Score:", r2)
+results = {
+    "mse": mse,
+    "r2": r2
+}
+
+print("Training metrics:")
+print(json.dumps(results, indent=2))
 
 # Save model
 joblib.dump(model, "outputs/model.pkl")
 
-# Save results
-results = {
-    "MSE": mse,
-    "R2_Score": r2
-}
-
-with open("outputs/results.json", "w") as f:
+# Save metrics (IMPORTANT for Lab 4)
+with open("outputs/metrics.json", "w") as f:
     json.dump(results, f, indent=4)
