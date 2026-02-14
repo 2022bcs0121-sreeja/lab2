@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "sreejachalla/wine-quality-api"
+        DOCKER_IMAGE = "2022bcs0121sreeja/wine-quality-api"
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
     }
 
