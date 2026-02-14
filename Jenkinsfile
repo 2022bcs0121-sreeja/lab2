@@ -8,12 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/2022bcs0121-sreeja/lab2.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'python3 -m pip install --upgrade pip'
